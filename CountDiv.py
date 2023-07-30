@@ -1,31 +1,26 @@
-# This is a demo task.
-
 # Write a function:
 
-# def solution(A)
+# def solution(A, B, K)
 
-# that, given an array A of N integers, returns the smallest positive integer (greater than 0) that does not occur in A.
+# that, given three integers A, B and K, returns the number of integers within the range [A..B] that are divisible by K, i.e.:
 
-# For example, given A = [1, 3, 6, 4, 1, 2], the function should return 5.
+# { i : A ≤ i ≤ B, i mod K = 0 }
 
-# Given A = [1, 2, 3], the function should return 4.
-
-# Given A = [−1, −3], the function should return 1.
+# For example, for A = 6, B = 11 and K = 2, your function should return 3, because there are three numbers divisible by 2 within the range [6..11], namely 6, 8 and 10.
 
 # Write an efficient algorithm for the following assumptions:
 
-# N is an integer within the range [1..100,000];
-# each element of array A is an integer within the range [−1,000,000..1,000,000].
+# A and B are integers within the range [0..2,000,000,000];
+# K is an integer within the range [1..2,000,000,000];
+# A ≤ B.
 
+# you can write to stdout for debugging purposes, e.g.
+# print("this is a debug message")
 
-def solution(A):
-    hash=set()
-    N=len(A)
-    for a in A:
-        hash.add(a)
+def solution(A, B, K):
+    ans=0
+    ans+=((B//K)-(A//K))
+    if A%K==0:
+        ans+=1
+    return ans
 
-    for i in range(1, N+2):
-        if i not in hash:
-            return i
-
-    return -1
